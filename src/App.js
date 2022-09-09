@@ -1,23 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+import axios from "axios";
 
 function App() {
+  const options = {
+    method: 'GET',
+    url: 'https://api-nba-v1.p.rapidapi.com/players',
+    params: {id: '1'},
+    headers: {
+      'X-RapidAPI-Key': 'SIGN-UP-FOR-KEY',
+      'X-RapidAPI-Host': 'api-nba-v1.p.rapidapi.com'
+    }
+  };
+  
+  axios.request(options).then(function (response) {
+    console.log(response.data);
+  }).catch(function (error) {
+    console.error(error);
+  });
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <h1>NBA Stats</h1>
     </div>
   );
 }
